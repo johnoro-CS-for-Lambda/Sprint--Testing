@@ -17,14 +17,14 @@ describe('server.js', () => {
       expect(Array.isArray(res.body)).toBe(true);
     });
 
-      it('should have game objects structured correctly', () => {
-        if (res.body.length > 0) {
-          expect(
-            res.body[0].hasOwnProperty('title') && 
-            res.body[0].hasOwnProperty('genre')
-          ).toBe(true);
-        }
-      });
+    it('should have game objects structured correctly', () => {
+      if (res.body.length > 0) {
+        expect(
+          res.body[0].hasOwnProperty('title') && 
+          res.body[0].hasOwnProperty('genre')
+        ).toBe(true);
+      }
+    });
   });
 
   describe('GET /games/:id', () => {
@@ -42,12 +42,12 @@ describe('server.js', () => {
       expect(typeof res.body).toBe('object');
     });
 
-      it('should have game object structured correctly', () => {
-        expect(
-          res.body.hasOwnProperty('title') && 
-          res.body.hasOwnProperty('genre')
-        ).toBe(true);
-      });
+    it('should have game object structured correctly', () => {
+      expect(
+        res.body.hasOwnProperty('title') && 
+        res.body.hasOwnProperty('genre')
+      ).toBe(true);
+    });
   });
 
   describe('POST /games', () => {
