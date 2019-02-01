@@ -1,13 +1,24 @@
 const router = require('express').Router();
-const g = require('./games');
+const games = require('./games');
 
-router.route('/')
-  .get(g.GET)
-  .post(g.POST)
+const routes = {
+  '/': [
+    'get',
+    'post'
+  ],
+  '/:id': [
+    'get',
+    'put',
+    'delete'
+  ]
+};
 
-router.route('/:id')
-  .get(g.GET)
-  .put(g.PUT)
-  .delete(g.DELETE);
+Object.keys(routes).forEach(route => {
+  routes[route].forEach(endpoint => {
+    router.route(route)[endpoint](
+      games[endpoint.toUpperCase()]
+    );
+  });
+});
 
 module.exports = router;
