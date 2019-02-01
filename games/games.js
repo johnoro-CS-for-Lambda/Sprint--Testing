@@ -12,12 +12,12 @@ const sendNotFound = res => {
 
 const GET = (req, res) => {
   const { id } = req.params;
+
   if (!id) { // GET
     return res.status(200).json(games);
   }
 
   const game = getById(id);
-
   if (game) { // GET by id
     return res.status(200).json(game);
   }
@@ -75,6 +75,7 @@ const PUT = (req, res) => {
 
 const DELETE = (req, res) => {
   const game = getById(req.params.id);
+
   if (!game) {
     return sendNotFound(res);
   }
